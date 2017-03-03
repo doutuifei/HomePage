@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="4"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="11.5dp"
+        android:layout_marginTop="12dp"
+        android:text="限量抢购"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="16sp" />
+
+    <com.muzi.homepage.MarqueeTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="11.5dp"
+        android:layout_marginTop="6.5dp"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="Miss Dior迪奥香水 国际大牌"
+        android:textColor="@android:color/black"
+        android:textSize="11sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="11.5dp"
+        android:layout_marginTop="6dp"
+        android:background="@mipmap/hongkuang"
+        android:text="仅剩三件"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="10sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/shangping1" />
+</LinearLayout>
