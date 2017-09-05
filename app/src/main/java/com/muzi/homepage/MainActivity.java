@@ -8,8 +8,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewParent;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -18,15 +16,15 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.muzi.homepage.R.id.head_search_rr;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<MultipleItem> data;
-    // private SystemBarTintManager mTintManager;
-    private RelativeLayout head_search_rr;
+    private View searchView;
     private SuperSwipeRefreshLayout refreshLayout;
     private int mDistanceY;
-    private ViewParent head_viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +32,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         InitUI();
         Init();
-        // InitActionBar();
     }
 
 
     private void InitUI() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        head_search_rr = (RelativeLayout) findViewById(R.id.head_search_rr);
-
-        //head_viewPager=(ViewPager)findViewById(R.id.head_viewPager);
+        searchView = findViewById(head_search_rr);
 
         /**
          * 滑动标题栏渐变
@@ -53,16 +48,16 @@ public class MainActivity extends AppCompatActivity {
                 //滑动的距离
                 mDistanceY += dy;
                 //toolbar的高度
-                int toolbarHeight = head_search_rr.getBottom();
+                int toolbarHeight = searchView.getBottom();
 
                 //当滑动的距离 <= toolbar高度的时候，改变Toolbar背景色的透明度，达到渐变的效果
                 if (mDistanceY <= toolbarHeight) {
                     float scale = (float) mDistanceY / toolbarHeight;
                     float alpha = scale * 255;
-                    head_search_rr.setBackgroundColor(Color.argb((int) alpha, 255, 255, 255));
+                    searchView.setBackgroundColor(Color.argb((int) alpha, 255, 255, 255));
                 } else {
                     //将标题栏的颜色设置为完全不透明状态
-                    head_search_rr.setBackgroundResource(R.color.white);
+                    searchView.setBackgroundResource(R.color.white);
                 }
             }
         });
@@ -92,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPullDistance(int distance) {
                 if (distance > 0) {
-                    head_search_rr.setVisibility(View.GONE);
+                    searchView.setVisibility(View.GONE);
                 } else {
-                    head_search_rr.setVisibility(View.VISIBLE);
+                    searchView.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -216,27 +211,4 @@ public class MainActivity extends AppCompatActivity {
         urls.add("http://image.tianjimedia.com/uploadImages/2011/264/31GX4T655Q6D.jpg");
         return urls;
     }
-//    private void InitActionBar() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            setTranslucentStatus(true);
-//            mTintManager = new SystemBarTintManager(this);
-//            mTintManager.setStatusBarTintEnabled(true);
-//
-//            mTintManager.setStatusBarAlpha(0.0f);
-//        }
-//    }
-//
-//    @TargetApi(19)
-//    private void setTranslucentStatus(boolean on) {
-//        Window win = getWindow();
-//        WindowManager.LayoutParams winParams = win.getAttributes();
-//        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-//        if (on) {
-//            winParams.flags |= bits;
-//        } else {
-//            winParams.flags &= ~bits;
-//        }
-//        win.setAttributes(winParams);
-//    }
-
 }
