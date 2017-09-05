@@ -1,7 +1,7 @@
 # HomePage
 **高仿京东商城首页，下拉刷新搜索栏隐藏，上滑渐变**
 ## 图片效果
- ![效果图]{https://github.com/TurnTears/HomePage/blob/master/img/1.gif}
+ ![效果图](https://github.com/TurnTears/HomePage/blob/master/img/1.gif)
 
 ## 思路
 * 渐变：监听RecyclerView的滑动距离，改变搜索栏的alpha值
