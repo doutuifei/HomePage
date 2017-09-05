@@ -1,7 +1,7 @@
 # HomePage
 高仿京东商城首页，下拉刷新搜索栏隐藏，上滑渐变
 ## 图片效果
-![image]{https://github.com/TurnTears/HomePage/blob/master/img/1.gif}
+![images] {https://github.com/TurnTears/HomePage/blob/master/img/1.gif}
 
 ## 思路
 * 渐变：监听RecyclerView的滑动距离，改变搜索栏的alpha值
@@ -10,15 +10,15 @@
 ##主要代码
 ### 渐变
 '''
-int mDistanceY=0;
-recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+    int mDistanceY=0;
+    recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 //滑动的距离
                 mDistanceY += dy;
                 //toolbar的高度
                 int toolbarHeight = searchView.getBottom();
-
                 //当滑动的距离 <= toolbar高度的时候，改变Toolbar背景色的透明度，达到渐变的效果
                 if (mDistanceY <= toolbarHeight) {
                     float scale = (float) mDistanceY / toolbarHeight;
@@ -30,4 +30,5 @@ recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 }
             }
         });
+        
 '''
